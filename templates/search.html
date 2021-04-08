@@ -1,0 +1,25 @@
+{% block title %}Search{% endblock %}
+
+{% block content %}
+{% if query %}
+<h1>Записи содержащие "{{ query }}"</h1>
+    <h3>
+        {% with results.count as total_results %}
+        Найдено {{ total_results }} результат {{ total_results|pluralize }}
+        {% endwith %}
+    </h3>
+{% for note in results %}
+    <h4><a href="{{ note.get_absolute_url }}">{{ note.name }}</a></h4>
+    {{ note.text|truncatewords:15 }}
+{% empty %}
+    <p>Нет результата по вашему запросу.</p>
+{% endfor %}
+<p><a href="{% url 'sea' %}">Искать снова</a></p>
+{% else %}
+<h1>Искать среди записей</h1>
+<form action="." method="get">
+{{ form.as_p }}
+<input type="submit" value="Искать">
+</form>
+{% endif %}
+{% endblock %}
