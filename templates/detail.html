@@ -9,8 +9,17 @@
 <ul>
     <p><img src="{{ note.image.url }}" width="100" height="100"/></p>
     <p>Name: {{ note.name }}</p>
+    <p>Family: {{ note.family }}</p>
+    <p>FullName: {{ note.full_name }} -=вычисляемое поле=-</p>
     <p>Slug: {{ note.slug }}</p>
     <p>Text: {{ note.text }}</p>
+    <div>
+        <blockquote>{{ note.text_upper }}</blockquote>
+    </div>
+    <p>Price: {{ note.price }}</p>
+    <p>Quantity: {{ note.quantity }}</p>
+    <p>Стоимость(итого:) {{ note.computing_price }} -=вычисляемое поле=-</p>
+    <p>Налог НДС: {{ note.nalog_nds }} -=вычисляемое поле=-</p>
 </ul>
 </body>
 </html>
